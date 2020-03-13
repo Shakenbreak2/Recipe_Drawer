@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link rel="stylesheet"
+	href="/SpringMVCProject-2/src/main/resources/static/css/style.css">
+<!-- Compiled and minified CSS -->
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+<!-- Compiled and minified JavaScript -->
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+<title>Document</title>
+</head>
+<body>
+	<!-- Navigation bar -->
+	<nav>
+		<div class="nav-wrapper">
+			<a href="profile" class="brand-logo">Logo</a> <a href="#"
+				data-target="mobile-demo" class="sidenav-trigger"><i
+				class="material-icons">menu</i></a>
+
+
+			<ul class="right hide-on-med-and-down">
+				<li><div class="nav-wrapper">
+						<form>
+							<div class="input-field">
+								<input id="search" type="search" required> <label
+									class="label-icon" for="search"><i
+									class="material-icons">search</i></label> <i class="material-icons">close</i>
+							</div>
+						</form>
+					</div></li>
+				<li><a href="home">Recipe Drawer</a></li>
+				<li><a href="recipe_list">Recipes</a></li>
+				<li><a href="FAQ">About Us</a></li>
+				<li><a href="login">Login</a></li>
+			</ul>
+		</div>
+	</nav>
+
+
+	<ul class="sidenav" id="mobile-demo">
+		<li><div class="nav-wrapper">
+				<form>
+					<div class="input-field">
+						<input id="search" type="search" required> <label
+							class="label-icon" for="search"><i class="material-icons">search</i></label>
+						<i class="material-icons">close</i>
+					</div>
+				</form>
+			</div></li>
+		<li><a href="home">Recipe Drawer</a></li>
+		<li><a href="recipe_list">Recipes</a></li>
+		<li><a href="FAQ">About Us</a></li>
+		<li><a href="login">Login</a></li>
+	</ul>
+	<!-- End nav bar-->
+	<main>
+		<div class="container" align="center">
+			<div class="login-page z-depth-1 grey lighten-4 row"
+				style="display: inline-block; padding: 40px 48px 0px 48px; border: 1px solid #EEE;">
+
+				<h1>Register</h1>
+				<form class="col s12 m12 l12" action="#" th:action="@{/save}"
+					th:object="${login}" method="post">
+					<table>
+						<tr>
+							<td>username</td>
+							<td><input type="text" id="username" name="username"
+								th:placeholder="Username" class="form-control" /></td>
+						</tr>
+						<tr>
+							<td>email</td>
+							<td><input type="text" id="email" name="email"
+								th:placeholder="Email" class="form-control" /></td>
+						</tr>
+						<tr>
+							<td>password</td>
+							<td><input type="password" th:placeholder="Password"
+								id="password" name="password" class="form-control" /></td>
+						</tr>
+						<tr>
+							<td colspan="3"><button class="btn waves-effect waves-light"
+									type="submit" name="action">Register</button></td>
+						</tr>
+					</table>
+				</form>
+			</div>
+		</div>
+
+	</main>
+
+	<!-- nav bar script-->
+	<script>
+		document.addEventListener('DOMContentLoaded', function() {
+			var elems = document.querySelectorAll('.sidenav');
+			var instances = M.Sidenav.init(elems, options);
+		});
+
+		// Or with jQuery
+
+		$(document).ready(function() {
+			$('.sidenav').sidenav();
+		});
+	</script>
+
+</body>
+</html>
