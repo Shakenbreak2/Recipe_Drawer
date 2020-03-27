@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<!-- Compiled and minified CSS -->
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+<!-- Compiled and minified JavaScript -->
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+<title>Document</title>
+</head>
+
+<body>
+	<header>
+		<!-- Navigation bar -->
+		<nav>
+			<div class="nav-wrapper">
+				<a href="profile" class="brand-logo">Recipe Drawer</a> <a href="#"
+					data-target="mobile-demo" class="sidenav-trigger"><i
+					class="material-icons">menu</i></a>
+
+
+				<ul class="right hide-on-med-and-down">
+					
+					<li><a href="home">Home</a></li>
+					<li><a href="recipe_list">Recipes</a></li>
+					<li><a href="FAQ">About Us</a></li>
+					<li><a href="login">Login</a></li>
+				</ul>
+			</div>
+		</nav>
+
+
+		<ul class="sidenav" id="mobile-demo">
+			
+			<li><a href="../profile">Profile</a></li>
+			<li><a href="home">Home</a></li>
+			<li><a href="recipe_list">Recipes</a></li>
+			<li><a href="FAQ">About Us</a></li>
+			<li><a href="login">Login</a></li>
+		</ul>
+		<!-- End nav bar-->
+	</header>
+	<main>
+		<div class="container" style="">
+			<div class="row">
+				<!-- filter left area-->
+				<div class="col s12 m3 l3" style="background-color: grey;">
+
+					<table th:each="category: ${categories}">
+						<tr>
+							
+							<td><div class="input-field col s12">
+									<span th:text="*{category.name}"></span>
+								</div>
+							</td>
+						</tr>
+					</table>
+
+				</div>
+
+
+				<div class="col s12 m9 l9">
+
+					<div class="row" th:each="recipe: ${recipies}">
+						<div class="col s12 m12 l12">
+							<div class="card blue-grey darken-1">
+								<div class="card-image">
+									<img th:src="@{'/images/'+ ${recipe.picture}+ '/raw'}" /> 
+								</div>
+								<div class="card-content white-text">
+									<span class="card-title" th:text="${recipe.name}">Card
+										Title</span>
+									<p class="card-text" th:text="${recipe.description}">description</p>
+
+								</div>
+								<div class="card-action">
+									<a th:href="@{'/recipe/'+ ${recipe.id}}">See Recipe</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+	<!-- footer -->
+	<footer>
+		<div class="footer-copyright">
+			<div class="container">
+				© 2020 Copyright Text <a class="grey-text text-lighten-4 right"
+					href="#!">More Links</a>
+			</div>
+		</div>
+	</footer>
+	<!-- nav bar script -->
+	<script>
+		document.addEventListener('DOMContentLoaded', function() {
+			var elems = document.querySelectorAll('.sidenav');
+			var instances = M.Sidenav.init(elems, options);
+		});
+
+		// Or with jQuery
+
+		$(document).ready(function() {
+			$('.sidenav').sidenav();
+		});
+	</script>
+
+</body>
+
+</html>

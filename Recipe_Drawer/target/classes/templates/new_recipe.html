@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link rel="stylesheet"
+	href="/SpringMVCProject-2/src/main/resources/static/css/style.css">
+<title>Insert title here</title>
+</head>
+<body>
+	<div align="left">
+		<a href="profile">back</a>
+	</div>
+	<h1>Edit Profile</h1>
+	<form action="#" th:action="@{/new_recipe/}" th:object="${recipe}"
+		method="post">
+		<table>
+			<tr>
+				<td>Your user id</td>
+				<td><input type="text" th:field="${user.id}" readonly="readonly"/></td>
+			</tr>
+			<tr>
+				<td>Recipe Name</td>
+				<td><input type="text" th:field="*{name}" /></td>
+			</tr>
+			<tr>
+				<td>Recipe Description</td>
+				<td><input type="text" th:field="*{description}" /></td>
+			</tr>
+			<tr>
+				<td>Ingredients</td>
+				<td><input type="text" th:field="*{ingredients}" /></td>
+			</tr>
+			<tr>
+				<td>Directions</td>
+				<td><input type="text" th:field="*{direction}" /></td>
+			</tr>
+			<tr>
+				<td>Picture</td>
+				<td><input type="file" th:field="*{picture}" id="recipe_pic"
+					name="recipe_pic" accept="image/png, image/jpeg" /></td>
+			</tr>
+			<tr>
+				<td>Categories</td>
+				<td><div class="input-field col s12">
+						<select multiple th:field="*{category}">
+							<option th:each="cat : ${categories}" th:value="${cat.id}"
+								th:text="${cat.name}"></option>
+						</select>
+					</div></td>
+			</tr>
+			<tr>
+				<td colspan="3"><button type="submit">Submit</button></td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>

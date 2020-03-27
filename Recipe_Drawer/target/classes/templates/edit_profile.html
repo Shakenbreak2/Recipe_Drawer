@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link rel="stylesheet"
+	href="/SpringMVCProject-2/src/main/resources/static/css/style.css">
+	<!-- Compiled and minified CSS -->
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+
+<!-- Compiled and minified JavaScript -->
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+	
+<title>Recipe Drawer-Edit Recipe</title>
+</head>
+<body class="red lighten-2">
+	<div class="section" align="center">
+		<h1>Edit Recipe</h1>
+		<div class="container z-depth-1 grey lighten-3 row"
+			style="display: inline-block; padding: 30px 30px 30px 30px; border: 1px solid #EEE;">
+			
+			<div class="back-button" align="left">
+				<a th:href="@{/profile}" class="button">back</a>
+			</div>
+			
+			<form action="#" th:action="@{/save_profile}"
+				th:object="${edit_profile}" method="post">
+				<table>
+					<tr>
+					<td>User Id</td>
+					<td><input type="text" th:field="*{id}" readonly="readonly"/></td>
+				</tr>
+				<tr>
+					<td>Name</td>
+					<td><input type="text" th:field="*{name}"/></td>
+				</tr>
+				<tr>
+					<td>Bio</td>
+					<td><textarea id="bio" th:field="*{bio}"></textarea></td>
+				</tr>
+				<tr>
+					<td>DOB</td>
+					<td><input type="date" th:field="*{dob}"/></td>
+				</tr>
+				<tr>
+					<td>Avatar</td>
+					<td><input type="file" th:field="*{picture}"/></td>
+				</tr>
+					<tr>
+						<td colspan="3" align="right"><button type="submit">Submit</button></td>
+					</tr>
+				</table>
+			</form>
+		</div>
+	</div>
+</body>
+</html>
